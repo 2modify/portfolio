@@ -101,7 +101,7 @@ axios.get('worklist.json')
             const work=`<li>
             <a href="${item.URL}" target="_new">
                 <div class="thumb">
-                    <img src="images/work-site-${num}.png" alt="site name">
+                    <img src="images/work-site-${num}.jpg" alt="site name">
                 </div>
                 <div class="cont-wrap">
                     <h3>${item.title}</h3>
