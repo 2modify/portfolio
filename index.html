@@ -3,9 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/_reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <title>Portfolio</title>
 </head>
 <body>
+    <header>
+        <div class="header-inner">
+            <nav>
+                <a href="sec-home">Home</a>
+                <a href="sec-work" id="navWork">Work</a>
+                <a href="sec-about">About</a>
+            </nav>
+            <a href=""></a>
+        </div>
+        
+    </header>
+    <section id="sec-home" class="intro">
+        <h1>안녕하세요<br> <span>웹퍼블리셔 이수정</span>입니다.</h1> <!--스크롤에 따라 배경에 블러처리 되는 이벤트-->
+<br>
+<br>
+<br>
+<br>
+        
+    <div class="dark-button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg>
+    </div>
+
+
+    </section>
+     <div class="main-wrap">
+        <section id="sec-about" class="about">
+            <div class="inner">
+                <h2 class="sec-title"><span>About</span></h2>
+                <div class="about-cont">
+                    <div class="me">
+                        <span class="icon"></span>
+                        <h3>이수정</h3>
+                        <p>저의 경험과 역량을 바탕으로 사용자들에게 더 좋은 경험을 제공하기 위해 노력하고 있습니다.<br> 디자인회사의 퍼블리셔로 일하면서 HTML, CSS, JS, jQuery 경험이 다수 있습니다.<br><!--현재는 React와 Type Script를 공부 중이며 실무에 사용할 수 있을 정도를 목표에 두고 있습니다.--></p>
+                    </div>
+                    <div class="workexperience">
+                        <span class="icon"></span>
+                        <h3>Work Experience</h3>
+                        <ul class="list">
+                            <li>
+                                나랑디자인, <span>웹퍼블리셔</span><br>
+                                <span class="date">2021.04~2023.07</span>
+                            </li>
+                            <li>
+                                지팡이ERP, <span>웹퍼블리셔(계약직)</span><br>
+                                <span class="date">2020.11~2020.12</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill">
+                        <span class="icon"></span>
+                        <h3>Skill</h3>
+                        <ul class="list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                            <li>Bootstrap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <section id="sec-work" class="work">
+            <div class="inner">
+                <h2 class="sec-title"><span>My Work</span></h2>
+                <p class="sec-desc">지금까지 작업한 결과물들이며 각 저작권은 해당 사이트 및 제작 업체에 있습니다.</p>
+                <ul class="work-list">
+                    <!--이후에 누르면 모달창 뜨고 상세 내용 적기-->
+                    <!--https://wsss.tistory.com/609 모달 이벤트-->
+
+                </ul>
+            </div>
+            
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="/js/ui.js"></script>
+        <script>
+            
+        </script>
+    </div>
     
+    <footer>
+        
+    </footer>
 </body>
 </html>
