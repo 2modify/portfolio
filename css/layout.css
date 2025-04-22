@@ -71,7 +71,6 @@ header nav a:hover{
 }
 
 .main-wrap section{
-    /* max-width: 1000px; */
     padding: 9.375rem 0;
 }
 
@@ -101,20 +100,6 @@ header nav a:hover{
     transform: translate(calc(100% + 0.625rem), -100%);
     content: '';
 }
-
-section .sec-title,
-section .sec-desc{
-    opacity: 0;
-    transform: translate(0, 50px);
-    transition: all 0.7s;
-}
-
-section[data-state="active"] .sec-title,
-section[data-state="active"] .sec-desc{
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
 
 .main-wrap .list>li{
     position: relative;
@@ -191,13 +176,6 @@ section[data-state="active"] .sec-desc{
     background-image: url(/images/skill.svg);
 }
 
-
-
-.work{
-    /* background: #e1dde3; */
-    /* background: #dfdcdb; */
-}
-
 .work-list{
     margin-top: 3.125rem;
 }
@@ -230,11 +208,6 @@ section[data-state="active"] .sec-desc{
     transition: transform 0.5s;
 }
 
-.work-list a:hover{
-    background: #e9e9e9;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
-}
-
 .work-list a:hover .thumb img{
     transform: scale(1.1);
 }
@@ -265,6 +238,12 @@ section[data-state="active"] .sec-desc{
 }
 
 @media screen and (max-width: 991px){
+    html{font-size: 14px;}
+
+    .main-wrap section{
+        padding: 3.44rem 0 3.75rem;
+    }
+
     .about-cont{
         flex-direction: column;
     }
@@ -276,10 +255,6 @@ section[data-state="active"] .sec-desc{
     .about-cont>div + div{
         margin-top: 1.25rem;
     }
-}
-
-@media screen and (max-width: 767px){
-    html{font-size: 14px;}
 
     .work-list a{
         flex-direction: column;
@@ -294,4 +269,14 @@ section[data-state="active"] .sec-desc{
     .work-list .thumb{
         max-width: none;
     }
+}
+
+@media screen and (max-width: 767px){
+    
+
+    
+}
+
+@media screen and (max-width: 575px){
+
 }

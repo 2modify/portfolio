@@ -27,61 +27,64 @@ document.addEventListener('DOMContentLoaded', function(){
     
 })
 
+const fadeDefaults = {
+    y: 0,
+    autoAlpha: 1,
+    duration: 1,
+    ease: 'power2.out',
+}
 
-// gsap.to('.about-cont', {
-//     scrollTrigger: '.work',
-//     x: -500,
-//     end: "+=500",
-//     markers: true,
-// });
+const scrollT = {
+    trigger: scrollTrigger,
+    start: 'top 70%',
+    toggleActions: 'play none none none'
+}
 
-// IntersectionObserver 콜백 함수
-const handleIntersection = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.dataset.state = "active";
-            observer.unobserve(entry.target); // 관찰 해제
-        }
-    });
-};
+function fadeIn(target, scrollTrigger = null,options = {}){
+    gsap.set(target, {y: '20%', autoAlpha: 0});
+    
+    const base = {
+        
+        ...options
+    }
+    
+    if(scrollTrigger){
+            base.scrollTrigger = {
+                
+            }
+    }
 
-// IntersectionObserver 설정
-const observerOptions = {
-    threshold: 0.3
-};
-const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    return gsap.to(target, base)
+}
 
-// 섹션 요소 선택 및 관찰
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    observer.observe(section);
+document.querySelectorAll('section').forEach(section => {
+    const title = section.querySelector('.sec-title');
+    const desc = section.querySelector('.sec-desc');
+
+    if(desc){
+        gsap.set(desc, {y: '20%', autoAlpha: 0});
+    }
+
+    if(title){
+        fadeIn(title, section,{
+            onComplete: () =>{
+                if(desc){
+                    fadeIn(desc)
+                }
+                
+            }
+        });
+    }else{
+        return;
+    }
+
+    
 });
 
-//위 코드 참고
-
-// const observer = new IntersectionObserver((e)=>{
-//     e.forEach((tg)=>{
-//         if(tg.isIntersecting){
-//             tg.target.dataset.state = "active";
-//         }
-//     })
-// },{
-//     threshold: 0.3
-// })
-// const sec = document.querySelectorAll('section')
-// observer.observe(sec[1])
-// observer.observe(sec[2])
-
-gsap.set('.about-cont>div',{ y: '20%', autoAlpha: 0})
-gsap.to('.about-cont>div',{
-    scrollTrigger: '.about .sec-title',
-    autoAlpha: 1,
-    y: 0,
-    duration: 1,
-    delay: 0.5,
-    stagger: { amount: 0.5 }
-})
-
+fadeIn('.about-cont>div', '.about .sec-title', {
+    delay:0.5,
+    stagger: {amount: 0.5}
+});
 
 axios.get('worklist.json')
     .then(response => {
@@ -122,12 +125,7 @@ axios.get('worklist.json')
         workUl.appendChild(li.firstChild);
         })
 
-        gsap.set('.work-list>li',{ y: '20%', autoAlpha: 0})
-        gsap.to('.work-list>li',{
-            scrollTrigger: '.work .sec-title',
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
+        fadeIn('.work-list>li', '.work .sec-title',{
             delay: 0.5,
             stagger: { amount: 0.5 }
         })
