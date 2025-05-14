@@ -27,64 +27,23 @@ document.addEventListener('DOMContentLoaded', function(){
     
 })
 
-const fadeDefaults = {
-    y: 0,
-    autoAlpha: 1,
-    duration: 1,
-    ease: 'power2.out',
+function fadeIn(target, scrollTrigger){
+    const targets = gsap.utils.toArray(target);
+
+    if (!target.length) return;
+
+    gsap.from(targets, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.5,
+        scrollTrigger: {
+            trigger: scrollTrigger,
+            start: 'top 70%',
+            toggleAction: 'play none none none'
+        }
+    })
 }
-
-const scrollT = {
-    trigger: scrollTrigger,
-    start: 'top 70%',
-    toggleActions: 'play none none none'
-}
-
-function fadeIn(target, scrollTrigger = null,options = {}){
-    gsap.set(target, {y: '20%', autoAlpha: 0});
-    
-    const base = {
-        
-        ...options
-    }
-    
-    if(scrollTrigger){
-            base.scrollTrigger = {
-                
-            }
-    }
-
-    return gsap.to(target, base)
-}
-
-document.querySelectorAll('section').forEach(section => {
-    const title = section.querySelector('.sec-title');
-    const desc = section.querySelector('.sec-desc');
-
-    if(desc){
-        gsap.set(desc, {y: '20%', autoAlpha: 0});
-    }
-
-    if(title){
-        fadeIn(title, section,{
-            onComplete: () =>{
-                if(desc){
-                    fadeIn(desc)
-                }
-                
-            }
-        });
-    }else{
-        return;
-    }
-
-    
-});
-
-fadeIn('.about-cont>div', '.about .sec-title', {
-    delay:0.5,
-    stagger: {amount: 0.5}
-});
 
 axios.get('worklist.json')
     .then(response => {
@@ -102,36 +61,43 @@ axios.get('worklist.json')
             });
             
             const work=`<li>
-            <a href="${item.URL}" target="_new">
-                <div class="thumb">
-                    <img src="images/work-site-${num}.jpg" alt="site name">
-                </div>
-                <div class="cont-wrap">
-                    <h3>${item.title}</h3>
-                    <ul class="list">
-                        <li><b>작업 기간: </b>${item.date}</li>
-                        <li><span>기여도: </span>${item.role}</li>
-                        <li>${item.report}</li>
-                    </ul>
-                    <ul class="technology">
-                        ${techList}
-                    </ul>
-                </div>
-            </a>
-        </li>`
+                <a href="${item.URL}" target="_new">
+                    <div class="thumb">
+                        <img src="images/work-site-${num}.jpg" alt="site name">
+                    </div>
+                    <div class="cont-wrap">
+                        <h3>${item.title}</h3>
+                        <ul class="list">
+                            <li><b>작업 기간: </b>${item.date}</li>
+                            <li><span>기여도: </span>${item.role}</li>
+                            <li>${item.report}</li>
+                        </ul>
+                        <ul class="technology">
+                            ${techList}
+                        </ul>
+                    </div>
+                </a>
+            </li>`
 
-        const li = document.createElement('li')
-        li.innerHTML = work;
-        workUl.appendChild(li.firstChild);
+        workUl.insertAdjacentHTML('beforeend', work)
+
         })
 
-        fadeIn('.work-list>li', '.work .sec-title',{
-            delay: 0.5,
-            stagger: { amount: 0.5 }
-        })
+        fadeIn('.work-list>li', '.work .sec-title')
+
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
+
+    document.querySelectorAll('section').forEach(section => {
+        
+        section.querySelectorAll('.fade-in').forEach(el => {
+            fadeIn(el, section)
+        })
+        section.querySelectorAll('.fade-group').forEach(el => {
+            fadeIn(el.querySelectorAll(':scope > *'), section)
+        })
+    })
 
             
