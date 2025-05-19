@@ -15,20 +15,21 @@
                 <a href="sec-work" id="navWork">Work</a>
                 <a href="sec-about">About</a>
             </nav>
-            <a href=""></a>
+            <button id="mode-btn">
+                <svg viewBox="0 0 24 24">
+                    <path id="mode-path" d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"/>
+                </svg>
+            </button>
+            <svg hidden>
+                <path id="dark-icon" d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"/>
+                <path id="light-icon" d="M22.386,12.003c-.402-.167-.871-.056-1.151,.28-.928,1.105-2.506,1.62-4.968,1.62-3.814,0-6.179-1.03-6.179-6.158,0-2.397,.532-4.019,1.626-4.957,.33-.283,.439-.749,.269-1.149-.17-.401-.571-.655-1.015-.604C5.285,1.573,1,6.277,1,11.978c0,6.062,4.944,10.993,11.022,10.993,5.72,0,10.438-4.278,10.973-9.951,.042-.436-.205-.848-.609-1.017Z"/>
+            </svg>
         </div>
         
     </header>
     <section id="sec-home" class="intro">
-        <h1>안녕하세요<br> <span>웹퍼블리셔 이수정</span>입니다.</h1> <!--스크롤에 따라 배경에 블러처리 되는 이벤트-->
-<br>
-<br>
-<br>
-<br>
-        
-    <div class="dark-button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg>
-    </div>
+        <!--<h1>안녕하세요<br> <span>웹퍼블리셔 이수정</span>입니다.</h1>--> <!--스크롤에 따라 배경에 블러처리 되는 이벤트-->
+        <h1>둘만의<br>하늘이 펼쳐지는 <span>밤에</span></h1>
 
 
     </section>
@@ -40,7 +41,7 @@
                     <div class="me">
                         <span class="icon"></span>
                         <h3>이수정</h3>
-                        <p>저의 경험과 역량을 바탕으로 사용자들에게 더 좋은 경험을 제공하기 위해 노력하고 있습니다.<br> 디자인회사의 퍼블리셔로 일하면서 HTML, CSS, JS, jQuery 경험이 다수 있습니다.<br><!--현재는 React와 Type Script를 공부 중이며 실무에 사용할 수 있을 정도를 목표에 두고 있습니다.--></p>
+                        <p>저의 경험과 역량을 바탕으로 사용자들에게 더 좋은 경험을 제공하기 위해 노력하고 있습니다.<br> 디자인회사의 퍼블리셔로 일하면서 HTML, CSS, JS, jQuery 경험이 다수 있습니다.</p>
                     </div>
                     <div class="workexperience">
                         <span class="icon"></span>
@@ -85,18 +86,19 @@
             </div>
             
         </section>
-        
+        <footer>
+            <a href="https://www.flaticon.com/uicons">Flaticon</a>의 UIcon
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
         <script src="/js/ui.js"></script>
         <script>
             
         </script>
     </div>
     
-    <footer>
-        
-    </footer>
+    
 </body>
 </html>

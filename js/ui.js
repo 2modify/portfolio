@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     navLink.forEach(navLink => {
         navLink.addEventListener('click',function(e){
             e.preventDefault();
-            
-            
             const navHref = navLink.getAttribute('href');
-            // const hashAdd = '#' + navHref
             const secId = document.getElementById(navHref);
 
 
@@ -99,5 +96,33 @@ axios.get('worklist.json')
             fadeIn(el.querySelectorAll(':scope > *'), section)
         })
     })
+
+    const colorMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const userDefaultMode = colorMode ? 'dark' : 'light'
+    const savedMode = localStorage.getItem('mode');
+    const initialMode = savedMode || userDefaultMode
+    const modeButton = document.getElementById("mode-btn");
+
+    modeEvent(initialMode);
+
+    function modeEvent(mode){
+        document.documentElement.setAttribute('data-mode', mode)
+        if(mode == 'dark'){
+            console.log('darkkkk')
+            gsap.to("#mode-path", { duration: 0.5, morphSVG: "#dark-icon" });
+        }else{
+            console.log('lighttttt')
+            gsap.to("#mode-path", { duration: 0.5, morphSVG: "#light-icon" });
+        }
+    }
+
+
+    modeButton.onclick = function(){
+        const currentMode = document.documentElement.getAttribute('data-mode');
+        const newMode = currentMode === 'dark' ? 'light' : 'dark'
+        localStorage.setItem('mode', newMode)
+        modeEvent(newMode);
+    }
+
 
             

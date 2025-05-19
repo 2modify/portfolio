@@ -9,6 +9,7 @@ html{
 
 body{
     font-size: 18px;
+    
 }
 
 header{
@@ -21,9 +22,13 @@ header{
     z-index: 999;
 }
 
+[data-mode = 'dark'] header{
+    background: rgba(25, 25, 25, 0.5);
+    border-bottom: none;
+}
+
 .header-inner{
     padding: 2.5rem max(20vw, 6.25rem);
-
 }
 
 header nav{
@@ -40,6 +45,30 @@ header nav a{
 
 header nav a:hover{
     color: var(--base-point);
+}
+
+#mode-btn{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: fill 0.3s;
+    transform: translateY(-50%);
+    fill: var(--bsse-font-color);
+}
+
+#mode-btn:hover{
+    fill: var(--base-point);
+}
+
+#light-icon{
+    visibility:hidden;
+}
+
+svg[hidden] {
+    display: none;
 }
 
 .intro{
@@ -121,6 +150,10 @@ header nav a:hover{
     background: #e9e9e9;
 }
 
+[data-mode = 'dark'] .about{
+    background: #1e1e1e;
+}
+
 .about-cont{
     display: flex;
     justify-content: space-between;
@@ -132,6 +165,10 @@ header nav a:hover{
     padding: 3.75rem 2.5rem;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
     background: rgba(255, 255, 255, 0.8);
+}
+
+[data-mode = 'dark'] .about-cont>div{
+    background: rgba(25, 25, 25, 0.8);
 }
 
 .about-cont .icon{
@@ -231,6 +268,10 @@ header nav a:hover{
     font-size: 0.813rem;
     border-radius: 0.938rem;
     background: #bfbfbf;
+}
+
+[data-mode = 'dark'] .work-list .technology li{
+    background: #111;
 }
 
 .work-list .technology li +li{
