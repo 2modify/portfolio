@@ -47,7 +47,7 @@ header nav a:hover{
     color: var(--base-point);
 }
 
-#mode-btn{
+.btn-mode{
     position: absolute;
     top: 50%;
     right: 30px;
@@ -59,11 +59,11 @@ header nav a:hover{
     fill: var(--bsse-font-color);
 }
 
-#mode-btn:hover{
+.btn-mode:hover{
     fill: var(--base-point);
 }
 
-#light-icon{
+.icon-light{
     visibility:hidden;
 }
 
@@ -89,6 +89,64 @@ svg[hidden] {
 
 .intro h1 span{
     color: var(--base-point);
+}
+
+.animation-img{
+    position: absolute;
+    right: max(10vw, 2.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.animation-img .sun, .animation-img .moon{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.animation-img [class$="-screen"] *{
+    transition: fill 0.5s;
+}
+
+[data-mode = 'dark'] .animation-img .code-ui{
+    fill: #181818
+}
+
+[data-mode = 'dark'] .animation-img .code-bg{
+    fill: #1f1f1f
+}
+
+[data-mode = 'dark'] .animation-img .web-ui,
+[data-mode = 'dark'] .animation-img .web-text{
+    fill: #3f3f3f
+}
+
+[data-mode = 'dark'] .animation-img .web-bg{
+    fill: #2d2d2d
+}
+
+.scroll-down{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrow.down {
+  border: solid var(--bsse-font-color);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 0.375rem;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+  40% { transform: translateY(8px) rotate(45deg); }
+  60% { transform: translateY(4px) rotate(45deg); }
 }
 
 .main-wrap{

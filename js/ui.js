@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     navLink.forEach(navLink => {
         navLink.addEventListener('click',function(e){
             e.preventDefault();
-            const navHref = navLink.getAttribute('href');
+            const navHref = navLink.getAttribute('href').replace('#', '');
             const secId = document.getElementById(navHref);
 
 
@@ -21,28 +21,107 @@ document.addEventListener('DOMContentLoaded', function(){
             
         })
     })
+
+    //intro animation
+
+    const sun = gsap.timeline(); 
+    const moon = gsap.timeline(); 
+    const sunOpacity = gsap.timeline(); 
+    const moonOpacity = gsap.timeline(); 
+
+    window.addEventListener('load', () => {
+        moveAnimation(moon, moonOpacity, '.animation-img .moon');
+        moveAnimation(sun, sunOpacity, '.animation-img .sun');
+    });
+        
+    function moveAnimation(tl, opacity, target){
+        tl.to(target,{
+            duration: 2,
+            motionPath:{
+                path: '#pathOrbit',
+                align: '#pathOrbit',
+                autoRotate: true,
+                alignOrigin: [0.5, 0.5]
+            },
+        },0)
+        .addPause(1.5)
+
+        opacity.fromTo(target,
+            {opacity: 0},
+            {opacity: 1, duration: 1, ease: "sine.inOut", immediateRender: false},
+            0
+        )
+        .addPause(1.5)
+        .to(target,{
+            opacity: 0,
+            duration: 0.5
+        },1.5)
+    }
+
+
+    const cloud = gsap.timeline({
+        repeat: -1,
+        delay: 2,
+        repeatDelay: 0
+    });
     
-})
-
-function fadeIn(target, scrollTrigger){
-    const targets = gsap.utils.toArray(target);
-
-    if (!target.length) return;
-
-    gsap.from(targets, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.5,
-        scrollTrigger: {
-            trigger: scrollTrigger,
-            start: 'top 70%',
-            toggleAction: 'play none none none'
+    cloud.to('.animation-img .cloud1',{
+        duration: 6.5,
+        motionPath:{
+            path:'#pathCloud1',
+            align:'#pathCloud1',
+            alignOrigin: [0.5, 0.5],
+            ease: "none"
         }
-    })
-}
+    },0)
+    .fromTo('.animation-img .cloud1',
+        {opacity: 0},
+        {opacity: 1, duration: 1, ease: "none"},
+        0
+    )
+    .to('.animation-img .cloud1',{
+        opacity:0,
+        duration: 1, ease: "none"
+    }, 5.5)
 
-axios.get('worklist.json')
+    const cloud2 = gsap.timeline({repeat: -1});
+
+    cloud2.to('.animation-img .cloud2',{
+        duration: 6,
+        motionPath:{
+            path:'#pathCloud2',
+            align:'#pathCloud2',
+            alignOrigin: [0.5, 0.5],
+        }
+    },0)
+    .fromTo('.animation-img .cloud2',
+        {opacity: 0},
+        {opacity: 1, duration: 1},
+        0
+    )
+    .to('.animation-img .cloud2',{
+        opacity:0,
+        duration: 1
+    }, 5)
+
+    
+    function fadeIn(target, scrollTrigger){
+        const targets = gsap.utils.toArray(target);
+
+        gsap.from(targets, {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.5,
+            scrollTrigger: {
+                trigger: scrollTrigger,
+                start: 'top 70%',
+                toggleActions: 'play none none none'
+            }
+        })
+    }
+
+    axios.get('worklist.json')
     .then(response => {
         const data = response.data
         const workUl = document.querySelector('.work-list');
@@ -101,18 +180,21 @@ axios.get('worklist.json')
     const userDefaultMode = colorMode ? 'dark' : 'light'
     const savedMode = localStorage.getItem('mode');
     const initialMode = savedMode || userDefaultMode
-    const modeButton = document.getElementById("mode-btn");
+    const modeButton = document.getElementById("btnMode");
 
     modeEvent(initialMode);
 
     function modeEvent(mode){
         document.documentElement.setAttribute('data-mode', mode)
         if(mode == 'dark'){
-            console.log('darkkkk')
-            gsap.to("#mode-path", { duration: 0.5, morphSVG: "#dark-icon" });
+            gsap.to("#pathMode", { duration: 0.5, morphSVG: "#iconDark" });
+            gsap.to('.animation-img .sun', { autoAlpha: 0, duration: 0.5 })
+            gsap.to('.animation-img .moon', { autoAlpha: 1, duration: 0.5 })
+            
         }else{
-            console.log('lighttttt')
-            gsap.to("#mode-path", { duration: 0.5, morphSVG: "#light-icon" });
+            gsap.to("#pathMode", { duration: 0.5, morphSVG: "#iconLight" });
+            gsap.to('.animation-img .sun', { autoAlpha: 1, duration: 0.5 })
+            gsap.to('.animation-img .moon', { autoAlpha: 0, duration: 0.5 })
         }
     }
 
@@ -122,7 +204,22 @@ axios.get('worklist.json')
         const newMode = currentMode === 'dark' ? 'light' : 'dark'
         localStorage.setItem('mode', newMode)
         modeEvent(newMode);
+        if(newMode == 'dark'){
+            moon.restart()
+            sun.play()
+            moonOpacity.restart()
+            sunOpacity.play()
+        }else{
+            sun.restart()
+            moon.play()
+            sunOpacity.restart()
+            moonOpacity.play()
+        }
     }
+})
 
 
-            
+
+
+
+
