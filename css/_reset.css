@@ -15,7 +15,7 @@ button{background: none;}
 }
 
 :root[data-mode='dark']{
-    --base-bg: #222;
+    --base-bg: #313131;
     --bsse-font-color: #eee;
     transition: color 0.5s, background-color 0.5s;
 }
