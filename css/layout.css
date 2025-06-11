@@ -79,7 +79,7 @@ svg[hidden] {
     padding: 2.5rem max(10vw, 2.5rem);
 }
 
-.intro h1{
+.intro-text{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -87,7 +87,8 @@ svg[hidden] {
     font-weight: 700;
 }
 
-.intro h1 span{
+.intro-text span{
+    display: inline-block;
     color: var(--base-point);
 }
 
@@ -108,20 +109,20 @@ svg[hidden] {
 }
 
 [data-mode = 'dark'] .animation-img .code-ui{
-    fill: #181818
+    fill: #3f3f3f;
 }
 
 [data-mode = 'dark'] .animation-img .code-bg{
-    fill: #1f1f1f
+    fill: #2d2d2d;
 }
 
 [data-mode = 'dark'] .animation-img .web-ui,
 [data-mode = 'dark'] .animation-img .web-text{
-    fill: #3f3f3f
+    fill: #181818;
 }
 
 [data-mode = 'dark'] .animation-img .web-bg{
-    fill: #2d2d2d
+    fill: #1f1f1f;
 }
 
 .scroll-down{

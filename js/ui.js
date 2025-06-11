@@ -21,8 +21,17 @@ document.addEventListener('DOMContentLoaded', function(){
             
         })
     })
+    //intro text animation
+    gsap.from(".intro-text span",{
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.5,
+        ease: "power3.out"
+    });
 
-    //intro animation
+    
+    //intro svg animation
 
     const sun = gsap.timeline(); 
     const moon = gsap.timeline(); 
