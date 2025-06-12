@@ -270,15 +270,15 @@ svg[hidden] {
 }
 
 .about-cont .me .icon{
-    background-image: url(/images/me.svg);
+    background-image: url(../images/me.svg);
 }
 
 .about-cont .workexperience .icon{
-    background-image: url(/images/workexperience.svg);
+    background-image: url(../images/workexperience.svg);
 }
 
 .about-cont .skill .icon{
-    background-image: url(/images/skill.svg);
+    background-image: url(../images/skill.svg);
 }
 
 .work-list{
