@@ -7,11 +7,6 @@ html{
     background: var(--base-bg);
 }
 
-body{
-    font-size: 18px;
-    
-}
-
 header{
     position:sticky;
     top: 0;
@@ -72,17 +67,18 @@ svg[hidden] {
 }
 
 .intro{
+    display: flex;
     position: fixed;
     top: 0;
     width: 100%;
-    height: 62.5rem;
+    height: max(100vh, 43.75rem);
     padding: 2.5rem max(10vw, 2.5rem);
+    justify-content: space-between;
+    align-items: center;
 }
 
 .intro-text{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    display: inline-block;
     font-size: 4rem;
     font-weight: 700;
 }
@@ -93,10 +89,7 @@ svg[hidden] {
 }
 
 .animation-img{
-    position: absolute;
-    right: max(10vw, 2.5rem);
-    top: 50%;
-    transform: translateY(-50%);
+    width: 45%;
 }
 
 .animation-img .sun, .animation-img .moon{
@@ -144,6 +137,7 @@ svg[hidden] {
   transform: rotate(45deg);
   animation: bounce 2s infinite;
 }
+
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
   40% { transform: translateY(8px) rotate(45deg); }
@@ -153,7 +147,7 @@ svg[hidden] {
 .main-wrap{
     position: relative;
     width: 100%;
-    margin-top: 62.5rem;
+    margin-top: max(100vh, 43.75rem);
     background: var(--base-bg);
     z-index: 98;
 }
@@ -318,12 +312,13 @@ svg[hidden] {
 
 .work-list .technology{
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
     margin-top: 0.625rem;
 }
 
 .work-list .technology li{
     padding: 0.188rem 0.625rem;
-    /* color: #fff; */
     font-size: 0.813rem;
     border-radius: 0.938rem;
     background: #bfbfbf;
@@ -333,15 +328,31 @@ svg[hidden] {
     background: #111;
 }
 
-.work-list .technology li +li{
-    margin-left: 0.625rem;
+.work-list .technology li:not(:last-child){
+    margin-right: 0.625rem;
+    margin-bottom: 0.625rem;
 }
 
 @media screen and (max-width: 991px){
-    html{font-size: 14px;}
-
     .main-wrap section{
         padding: 3.44rem 0 3.75rem;
+    }
+    
+    .intro{
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .intro-text{
+        width: auto;
+        font-size: 3.125rem;
+    }
+
+    .animation-img{
+        width: 60%;
+        margin-top: 3.75rem;
+        align-self: flex-end;
     }
 
     .about-cont{
@@ -371,12 +382,12 @@ svg[hidden] {
     }
 }
 
-@media screen and (max-width: 767px){
-    
-
-    
-}
-
 @media screen and (max-width: 575px){
-
+    .intro-text{
+        font-size: 2.5rem;
+    }
+    
+    .animation-img{
+        width: 100%;
+    }
 }
