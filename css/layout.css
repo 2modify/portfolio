@@ -1,3 +1,18 @@
+@import url('_reset.css');
+
+:root {
+    color-scheme: light dark;
+    --base-point:#fa7d17;
+    --base-bg: #eee;
+    --bsse-font-color: #222;
+}
+
+:root[data-mode='dark']{
+    --base-bg: #313131;
+    --bsse-font-color: #eee;
+    transition: color 0.5s, background-color 0.5s;
+}
+
 html{
     font-family: "Noto Sans KR", sans-serif;
     color:var(--bsse-font-color);
